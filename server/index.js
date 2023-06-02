@@ -9,8 +9,20 @@ import clientRoutes from "./routes/client.js"
 import generalRoutes from "./routes/general.js"
 import managementRoutes from "./routes/management.js"
 import salesRoutes from "./routes/sales.js"
+import Product from './models/Product.js';
+import ProductStat from './models/ProductStat.js';
+
+
+import User from "./models/user.js";
+import {dataProduct, dataProductStat, dataUser} from "./data/index.js"
+
+
+
 
 dotenv.config()
+
+
+
 
 const app=express();
 app.use(express.json())
@@ -33,6 +45,10 @@ mongoose.connect(process.env.MONGO_URL,{
     useUnifiedTopology:true,
 }).then(()=>{
     app.listen(PORT,()=>console.log(`Mongodb connected port:${PORT}`))
+    // Product.insertMany(dataProduct)
+    // ProductStat.insertMany(dataProduct)
+    // User.insertMany(dataUser);
+
 }).catch((err) => {
     console.log(`${err} didnot connect`)
 })

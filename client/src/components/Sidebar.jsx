@@ -94,6 +94,7 @@ const navItems = [
   ];
 
 const Sidebar = ({
+  user,
     drawerWidth,
     isSidebarOpen,
     setIsSidebarOpen,
@@ -190,9 +191,9 @@ useEffect(()=>{
             </List>
           </Box>
 
-          {/* <Box position="absolute" bottom="2rem">
+          <Box  bottom="0px">
             <Divider />
-            <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
+            <FlexBetween textTransform="none" gap="0rem" m="1.5rem 4rem 0 2rem">
               <Box
                 component="img"
                 alt="profile"
@@ -200,6 +201,7 @@ useEffect(()=>{
                 height="40px"
                 width="40px"
                 borderRadius="50%"
+                margin="0"
                 sx={{ objectFit: "cover" }}
               />
               <Box textAlign="left">
@@ -208,13 +210,13 @@ useEffect(()=>{
                   fontSize="0.9rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  {user.name}
+                  {user.name|| "Arun"} 
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  {user.occupation}
+                  {user.occupation || "SDE"}
                 </Typography>
               </Box>
               <SettingsOutlined
@@ -224,7 +226,7 @@ useEffect(()=>{
                 }}
               />
             </FlexBetween>
-          </Box> */}
+          </Box>
 
 
             </Drawer> 
