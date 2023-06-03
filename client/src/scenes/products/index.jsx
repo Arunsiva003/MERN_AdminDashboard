@@ -11,8 +11,8 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-// import Header from "components/Header";
 import { useGetProductsQuery } from "states/api";
+import Header from "components/Header";
 
 const Product = ({
   _id,
@@ -57,7 +57,7 @@ const Product = ({
         <Button
           variant="primary"
           size="small"
-          onClick={() => setIsExpanded(!isExpanded)}
+          onClick={() => setIsExpanded((prev) => !prev)} // this needed to be wrapped in an arrow function changed from setIsExpanded(!isExpanded)}
         >
           See More
         </Button>
@@ -87,12 +87,14 @@ const Product = ({
 
 const Products = () => {
   const { data, isLoading } = useGetProductsQuery();
+  console.log("productsData:", data)
+  console.log("isLoading:", isLoading)
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
 
   return (
     <Box m="1.5rem 2.5rem">
     {console.log("hello")}
-      {/* <Header title="PRODUCTS" subtitle="See your list of products." /> */}
+      <Header title="PRODUCTS" subtitle="See your list of products." />
       {data && !isLoading ? (
         <Box
           mt="20px"

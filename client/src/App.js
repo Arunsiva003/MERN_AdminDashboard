@@ -1,4 +1,3 @@
-import { Css } from "@mui/icons-material";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import {createTheme} from "@mui/material/styles";
 import {useMemo} from "react";
@@ -7,11 +6,11 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { themeSettings } from "theme";
 import  Dashboard  from "scenes/dashboard";
 import Layout from "scenes/layout";
-import Products from "scenes/products";
+import Products from "scenes/products"; // needed to add this to the import list for the products page to work
 
 
 function App() {
-  const mode = useSelector((state) => state.global.mode)
+  const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(()=>createTheme(themeSettings(mode)),[mode]);
   return (
     <div className="app">
@@ -22,10 +21,11 @@ function App() {
           <Route element={<Layout/>}>
             <Route path="/" element={<Navigate to="/dashboard" replace/>}/>
             <Route path="/dashboard" element={<Dashboard/>}/>
-            <Route path="/products" element={<Products/>} />
+            <Route path="/products" element={<Products/>} /> 
           </Route>
         </Routes>
 
+            {/* Added products routes */}
 
        </ThemeProvider>
     </BrowserRouter>
