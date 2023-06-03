@@ -9,16 +9,15 @@ import { useSelector } from 'react-redux';
 function Layout() {
   const isNonMobile = useMediaQuery("(min-width:600px");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const userId = useSelector((state) => state.global.userId);
-  const { data } = useGetUserQuery(userId);
-  // console.log("🚀 ~ file: index.jsx:13 ~ Layout ~ ̥:", data)
-
+  const userId = useSelector((state) => state.global.userId); // I think this might be used later
+  const { data } = useGetUserQuery(userId); // I think this might be used later as well to verify the user data is being recieved
+  console.log("LayoutData", data); // For Debugging
 
   return (
-    <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
+    <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%"> 
 
       <Sidebar
-        user={data || {}}
+        user={data || {}} // This is part of the useGetUserQuery hook used to get the user data for the profile at the bottom of the bar. 
         isNonMobile={isNonMobile}
         drawerWidth="250px"
         isSidebarOpen={isSidebarOpen}
@@ -27,17 +26,14 @@ function Layout() {
 
 <Box flexGrow={1}>
         <Navbar 
-        user={data || {}}
+        user={data || {}} // This is part of the useGetUserQuery hook used to get the user data for the profile for the logout button. 
          isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
-        <Outlet/>
+        <Outlet />
       </Box>
 
-{/* 
-      <Navbar/>
-      <Outlet/> */}
     </Box>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

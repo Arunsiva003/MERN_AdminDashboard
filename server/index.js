@@ -9,25 +9,23 @@ import clientRoutes from "./routes/client.js"
 import generalRoutes from "./routes/general.js"
 import managementRoutes from "./routes/management.js"
 import salesRoutes from "./routes/sales.js"
+
+
+
+import User from './models/user.js';
 import Product from './models/Product.js';
 import ProductStat from './models/ProductStat.js';
-
-
-import User from "./models/user.js";
-import {dataProduct, dataProductStat, dataUser} from "./data/index.js"
+import { dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat } from './data/index.js';
 
 
 
 
-dotenv.config()
-
-
-
-
+dotenv.config();
 const app=express();
 app.use(express.json())
 app.use(helmet())
 app.use(helmet.crossOriginResourcePolicy({policy:"cross-origin"}))
+app.use(morgan("common")) //added morgan
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(cors())

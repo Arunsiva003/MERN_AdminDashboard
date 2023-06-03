@@ -1,7 +1,5 @@
 import React,{useState} from 'react'
 import { LightModeOutlined, DarkModeOutlined, Menu as MenuIcon, Search, SettingsOutlined,ArrowDropDownOutlined, } from '@mui/icons-material'
-// import AppBar from '@mui/material';
-// import Toolbar from '@mui/material';
 import FlexBetween from 'components/FlexBetween';
 import { useDispatch } from 'react-redux';
 import { setMode } from 'states';
@@ -20,10 +18,11 @@ import {
   } from "@mui/material";
   
 
-const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
+const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => { //changed from function to const
     const dispatch = useDispatch();
     const theme = useTheme();
   
+    // for handling menu open and close
     const [anchorEl, setAnchorEl] = useState(null);
     const isOpen = Boolean(anchorEl);
     const handleClick = (event) => setAnchorEl(event.currentTarget);
